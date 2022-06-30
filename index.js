@@ -88,8 +88,9 @@ function increaseQuantity(item) {
 }
 
 function decreaseQuantity(item) {
+  if (item.inCart === 0) return
   item.inCart--
- }
+}
 
 function getImagePath(item) {
   let id = String(item.id).padStart(3, '0') // instead of 1 --> 001
@@ -180,18 +181,21 @@ function renderCartItems() {
     cartItemsUl.append(cartItemLiEl)
   }
 }
-
 function getTotal() {
-let total=0
-for (let item of getCartItems()) {
-total=item.price*item.inCart
-}
-return total
+  let total = 0
+let totalItemPrice=0
+  for (let item of getCartItems()) {
+    total = item.price * item.inCart
+    totalItemPrice += Number(total)
+    console.log(totalItemPrice)
+  }
+  return totalItemPrice
 }
 
-function renderTotal(){
+function renderTotal() {
   let totalPrice = document.querySelector('.total-number')
-  totalPrice.textContent= String(getTotal())
+  totalPrice.textContent = String(getTotal())
+
 }
 
 function render() {
