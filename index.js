@@ -136,11 +136,14 @@ function renderCartItems() {
 //  <span class="quantity-text center">1</span>
 //  <button class="quantity-btn add-btn center">+</button>
 //</li>
+
+for (let item of state.storeItems) {
+
 let cartItemLiEl= document.createElement('li')
 
 let cartImgEl= document.createElement('img')
 cartImgEl.className='cart--item-icon'
-cartImgEl.src='assets/icons/001-beetroot.svg'
+cartImgEl.src=getImagePath(item)
 cartImgEl.alt="beetroot"
 
 let cartPEl=document.createElement('p')
@@ -160,7 +163,7 @@ cartButtonEl2.textContent='+'
 
 cartItemLiEl.append(cartImgEl, cartPEl, cartButtonEl, cartSpanEl, cartButtonEl2)
 cartItemsUl.append(cartItemLiEl)
-
+}
 }
 
 function renderTotal(){
