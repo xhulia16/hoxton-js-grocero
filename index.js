@@ -16,24 +16,6 @@ This is how an item object should look like
 //<button>Add to cart</button>
 //</li>
 
-//function listItems(){
-//let liEl= document.createElement('li')
-//let imgDivEl=document.createElement('div')
-//let imgEl=document.createElement('img')
-//imgEl.src="assets/icons/001-beetroot.svg"
-//let buttonEl =document.createElement('button')
-//buttonEl.textContent="Add to cart"
-
-//imgDivEl.append(imgEl)
-//liEl.append(imgDivEl, buttonEl)
-
-//let itemsStoreList=document.querySelector('.item-list')
-//itemsStoreList.append(liEl)
-//console.log(itemsStoreList)
-//}
-
-//listItems()
-
 //recreating the dynamic part
 
 let state = {
@@ -108,18 +90,25 @@ let state = {
 //function increaseQuantity() { }
 
 //function decreaseQuantity() { }
+function getImagePath(item){
+  let id= String(item.id).padStart(3,'0') // instead of 1 --> 001
+return `assets/icons/${id}-${item.name}.svg`
+
+}
 
 function renderStoreItems() {
   let storeItemsUl = document.querySelector('.store--item-list')
   storeItemsUl.textContent = ''
+  
+  for (let item of state.storeItems) { 
 
   let liEl = document.createElement('li')
 
   let imgDivEl = document.createElement('div')
-  imgDivEl.className='.store--item-icon'
+  imgDivEl.className = '.store--item-icon'
 
   let imgEl = document.createElement('img')
-  imgEl.src = 'assets/icons/001-beetroot.svg'
+  imgEl.src = getImagePath(item)
 
   let buttonEl = document.createElement('button')
   buttonEl.textContent = 'Add to cart'
@@ -128,7 +117,7 @@ function renderStoreItems() {
   liEl.append(imgDivEl, buttonEl)
 
   storeItemsUl.append(liEl)
-
+  }
 }
 
 
