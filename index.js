@@ -123,7 +123,7 @@ function renderStoreItems() {
 
 
 function renderCartItems() {
-  let cartItemsUl = document.querySelector('cart--item-list')
+  let cartItemsUl = document.querySelector('.cart--item-list')
   cartItemsUl.textContent = ''
 //  <li>
 //  <img
@@ -140,18 +140,26 @@ let cartItemLiEl= document.createElement('li')
 
 let cartImgEl= document.createElement('img')
 cartImgEl.className='cart--item-icon'
+cartImgEl.src='assets/icons/001-beetroot.svg'
+cartImgEl.alt="beetroot"
 
 let cartPEl=document.createElement('p')
 cartPEl.textContent='beetroot'
 
 let cartButtonEl=document.createElement('button')
-cartButtonEl.className='remove-btn center'
+cartButtonEl.className='quantity-btn remove-btn center'
+cartButtonEl.textContent='-'
 
 let cartSpanEl=document.createElement('span')
-cartSpanEl.className='center'
+cartSpanEl.className='quantity-text center'
+cartSpanEl.textContent='1'
 
 let cartButtonEl2=document.createElement('button')
-cartButtonEl2.className='remove-btn center'
+cartButtonEl2.className='quantity-btn remove-btn center'
+cartButtonEl2.textContent='+'
+
+cartItemLiEl.append(cartImgEl, cartPEl, cartButtonEl, cartSpanEl, cartButtonEl2)
+cartItemsUl.append(cartItemLiEl)
 
 }
 
@@ -161,7 +169,7 @@ let totalPrice = document.querySelector('total-section')
 
 function render() {
   renderStoreItems()
-  renderStoreItems()
+  renderCartItems()
   renderTotal()
 }
 
