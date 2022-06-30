@@ -181,8 +181,17 @@ function renderCartItems() {
   }
 }
 
-function renderTotal() {
-  let totalPrice = document.querySelector('total-section')
+function getTotal() {
+let total=0
+for (let item of getCartItems()) {
+total=item.price*item.inCart
+}
+return total
+}
+
+function renderTotal(){
+  let totalPrice = document.querySelector('.total-number')
+  totalPrice.textContent= String(getTotal())
 }
 
 function render() {
