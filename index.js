@@ -90,33 +90,34 @@ let state = {
 //function increaseQuantity() { }
 
 //function decreaseQuantity() { }
-function getImagePath(item){
-  let id= String(item.id).padStart(3,'0') // instead of 1 --> 001
-return `assets/icons/${id}-${item.name}.svg`
+
+function getImagePath(item) {
+  let id = String(item.id).padStart(3, '0') // instead of 1 --> 001
+  return `assets/icons/${id}-${item.name}.svg`
 
 }
 
 function renderStoreItems() {
   let storeItemsUl = document.querySelector('.store--item-list')
   storeItemsUl.textContent = ''
-  
-  for (let item of state.storeItems) { 
 
-  let liEl = document.createElement('li')
+  for (let item of state.storeItems) {
 
-  let imgDivEl = document.createElement('div')
-  imgDivEl.className = '.store--item-icon'
+    let liEl = document.createElement('li')
 
-  let imgEl = document.createElement('img')
-  imgEl.src = getImagePath(item)
+    let imgDivEl = document.createElement('div')
+    imgDivEl.className = '.store--item-icon'
 
-  let buttonEl = document.createElement('button')
-  buttonEl.textContent = 'Add to cart'
+    let imgEl = document.createElement('img')
+    imgEl.src = getImagePath(item)
 
-  imgDivEl.append(imgEl)
-  liEl.append(imgDivEl, buttonEl)
+    let buttonEl = document.createElement('button')
+    buttonEl.textContent = 'Add to cart'
 
-  storeItemsUl.append(liEl)
+    imgDivEl.append(imgEl)
+    liEl.append(imgDivEl, buttonEl)
+
+    storeItemsUl.append(liEl)
   }
 }
 
@@ -124,10 +125,39 @@ function renderStoreItems() {
 function renderCartItems() {
   let cartItemsUl = document.querySelector('cart--item-list')
   cartItemsUl.textContent = ''
+//  <li>
+//  <img
+//    class="cart--item-icon"
+//    src="assets/icons/001-beetroot.svg"
+//    alt="beetroot"
+//  />
+//  <p>beetroot</p>
+//  <button class="quantity-btn remove-btn center">-</button>
+//  <span class="quantity-text center">1</span>
+//  <button class="quantity-btn add-btn center">+</button>
+//</li>
+let cartItemLiEl= document.createElement('li')
+
+let cartImgEl= document.createElement('img')
+cartImgEl.className='cart--item-icon'
+
+let cartPEl=document.createElement('p')
+cartPEl.textContent='beetroot'
+
+let cartButtonEl=document.createElement('button')
+cartButtonEl.className='remove-btn center'
+
+let cartSpanEl=document.createElement('span')
+cartSpanEl.className='center'
+
+let cartButtonEl2=document.createElement('button')
+cartButtonEl2.className='remove-btn center'
+
 }
 
-function renderTotal() { }
+function renderTotal(){
 let totalPrice = document.querySelector('total-section')
+}
 
 function render() {
   renderStoreItems()
